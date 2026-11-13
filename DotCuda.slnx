@@ -6,6 +6,12 @@
     <Project Path="src/DotCuda.Cuda12.NvJitLink/DotCuda.Cuda12.NvJitLink.csproj" />
     <Project Path="src/DotCuda.Cuda12.Nvml/DotCuda.Cuda12.Nvml.csproj" />
     <Project Path="src/DotCuda.Cuda12.Nvrtc/DotCuda.Cuda12.Nvrtc.csproj" />
+    <Project Path="src/DotCuda.Cuda13.CublasLt/DotCuda.Cuda13.CublasLt.csproj" />
+    <Project Path="src/DotCuda.Cuda13.Cudnn9/DotCuda.Cuda13.Cudnn9.csproj" />
+    <Project Path="src/DotCuda.Cuda13.Driver/DotCuda.Cuda13.Driver.csproj" />
+    <Project Path="src/DotCuda.Cuda13.NvJitLink/DotCuda.Cuda13.NvJitLink.csproj" />
+    <Project Path="src/DotCuda.Cuda13.Nvml/DotCuda.Cuda13.Nvml.csproj" />
+    <Project Path="src/DotCuda.Cuda13.Nvrtc/DotCuda.Cuda13.Nvrtc.csproj" />
     <Project Path="src/DotCuda.Cudnn9/DotCuda.Cudnn9.csproj" />
     <Project Path="src/DotCuda.Generator/DotCuda.Generator.csproj" />
   </Folder>

@@ -1,0 +1,21 @@
+{
+  // nvJitLink (nvJitLink.h): links LTO-IR, PTX and cubins (e.g. NVRTC output compiled with -dlto) into a cubin.
+  // The public functions are static inline wrappers over versioned exports (nvJitLinkCreate -> __nvJitLinkCreate_12_6);
+  // the generator binds each wrapper's name to the export it forwards to.
+  "name": "NvJitLink13",
+  "project": "DotCuda.Cuda13.NvJitLink",
+  "namespace": "DotCuda.Cuda13",
+  "className": "NvJitLink",
+  "header": "nvJitLink.h",
+  // CUDA 13 headers: DOTCUDA_CUDA13_PATH, else tools/fetch-cuda-sdk.ps1's folder, else an installed v13.x toolkit.
+  "includeDirs": ["%DOTCUDA_CUDA13_PATH%\\include", "%LOCALAPPDATA%\\DotCuda\\sdk\\cuda-13.*\\include", "%ProgramFiles%\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.*\\include"],
+  "functionPrefixes": ["nvJitLink"],
+  "typePrefixes": ["nvJitLink"],
+  "constantPrefixes": ["NVJITLINK"],
+  "library": {
+    "logicalName": "nvJitLink13",
+    "windows": "nvJitLink_130_0.dll",
+    "linux": "libnvJitLink.so.13"
+  },
+  "exportCheck": ["%LOCALAPPDATA%\\DotCuda\\sdk\\cuda-13.*\\bin\\x64\\nvJitLink_130_0.dll"]
+}

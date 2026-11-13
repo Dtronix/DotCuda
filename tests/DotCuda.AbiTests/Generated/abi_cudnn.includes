@@ -1,2 +1,4 @@
 %DOTCUDA_CUDNN_INCLUDE%
 %ProgramFiles%\NVIDIA\CUDNN\v9.*\include\12.*
+%DOTCUDA_CUDA12_PATH%\include
+%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v12.*\include

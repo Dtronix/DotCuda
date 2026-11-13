@@ -1,0 +1,36 @@
+{
+  // CUDA driver API (cuda.h), CUDA 13 headers.
+  "name": "Driver13",
+  "project": "DotCuda.Cuda13.Driver",
+  "namespace": "DotCuda.Cuda13",
+  "className": "Cu",
+  "header": "cuda.h",
+  // CUDA 13 headers: DOTCUDA_CUDA13_PATH, else tools/fetch-cuda-sdk.ps1's folder, else an installed v13.x toolkit.
+  "includeDirs": ["%DOTCUDA_CUDA13_PATH%\\include", "%LOCALAPPDATA%\\DotCuda\\sdk\\cuda-13.*\\include", "%ProgramFiles%\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.*\\include"],
+  "functionPrefixes": ["cu"],
+  "typePrefixes": ["CU", "cu", "cl_"],
+  "constantPrefixes": ["CU"],
+  // Off, as in the spike: stream-ordered calls bind to the legacy default-stream exports.
+  "perThreadDefaultStream": false,
+  "integerHandles": {
+    "CUdeviceptr": ["CUdeviceptr_v2"],
+    "CUdevice": ["CUdevice_v1"],
+    "CUtexObject": ["CUtexObject_v1"],
+    "CUsurfObject": ["CUsurfObject_v1"],
+    "CUmemGenericAllocationHandle": ["CUmemGenericAllocationHandle_v1"],
+    "CUgraphConditionalHandle": []
+  },
+  // CUDA-wide types from library_types.h live here so cuBLASLt, cuDNN, ... share one definition.
+  "extraIncludes": ["library_types.h"],
+  "extraTypes": ["cudaDataType", "libraryPropertyType"],
+  "excludeFunctions": {
+    "cuDeviceGetNvSciSyncAttributes": "NvSciSync is Linux/Tegra-only; nvcuda.dll does not export it"
+  },
+  "library": {
+    "logicalName": "cuda",
+    "windows": "nvcuda.dll",
+    "linux": "libcuda.so.1",
+    "useLibDir": false
+  },
+  "exportCheck": ["%SystemRoot%\\System32\\nvcuda.dll"]
+}

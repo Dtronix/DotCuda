@@ -12,7 +12,8 @@ public readonly record struct AbiFact(string Key, long CSharp, long Clang);
 /// </summary>
 public class AbiTests
 {
-    public static IEnumerable<string> Libraries() => ["Driver", "Nvrtc", "CublasLt", "Nvml", "NvJitLink", "Cudnn"];
+    public static IEnumerable<string> Libraries() =>
+        ["Driver", "Nvrtc", "CublasLt", "Nvml", "NvJitLink", "Cudnn", "Driver13", "Nvrtc13", "NvJitLink13", "CublasLt13", "Nvml13", "Cudnn13"];
 
     static List<AbiFact> Facts(string library)
     {
@@ -25,6 +26,12 @@ public class AbiTests
             case "Nvml": AbiExpected.CollectNvml(facts); break;
             case "NvJitLink": AbiExpected.CollectNvJitLink(facts); break;
             case "Cudnn": AbiExpected.CollectCudnn(facts); break;
+            case "Driver13": AbiExpected.CollectDriver13(facts); break;
+            case "Nvrtc13": AbiExpected.CollectNvrtc13(facts); break;
+            case "NvJitLink13": AbiExpected.CollectNvJitLink13(facts); break;
+            case "CublasLt13": AbiExpected.CollectCublasLt13(facts); break;
+            case "Nvml13": AbiExpected.CollectNvml13(facts); break;
+            case "Cudnn13": AbiExpected.CollectCudnn13(facts); break;
             default: throw new ArgumentException(library);
         }
         return facts;

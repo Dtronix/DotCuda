@@ -1,0 +1,30 @@
+{
+  // cuBLASLt (cublasLt.h). Shared types it needs from cublas_api.h and library_types.h (cublasStatus_t,
+  // cublasComputeType_t, cudaDataType_t, ...) are emitted here because a cuBLASLt function uses them;
+  // cudaStream_t is struct CUstream_st*, reused from the driver package as CUstream.
+  "name": "CublasLt13",
+  "project": "DotCuda.Cuda13.CublasLt",
+  "namespace": "DotCuda.Cuda13",
+  "className": "CublasLt",
+  "header": "cublasLt.h",
+  // CUDA 13 headers: DOTCUDA_CUDA13_PATH, else tools/fetch-cuda-sdk.ps1's folder, else an installed v13.x toolkit.
+  "includeDirs": ["%DOTCUDA_CUDA13_PATH%\\include", "%LOCALAPPDATA%\\DotCuda\\sdk\\cuda-13.*\\include", "%ProgramFiles%\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.*\\include"],
+  "functionPrefixes": ["cublasLt"],
+  "typePrefixes": ["cublasLt", "CUBLASLT"],
+  "constantPrefixes": ["CUBLASLT"],
+  "references": ["Driver13"],
+  // Descriptors are pointers to semi-opaque structs (uint64_t data[N]) created by cublasLt*Create; bind them as handles.
+  "pointerHandles": ["cublasLtMatrixLayout_t", "cublasLtMatmulDesc_t", "cublasLtMatrixTransformDesc_t", "cublasLtMatmulPreference_t"],
+  // Attribute value types named in cublasLt.h's attribute docs but used by no signature.
+  "extraTypes": ["cublasOperation_t", "cublasFillMode_t"],
+  "excludeFunctions": {
+    "cublasLtDisableCpuInstructionsSetMask": "declared in cublasLt.h but not exported by the Windows cuBLASLt DLL"
+  },
+  "versionMacros": ["CUBLAS_VER_MAJOR", "CUBLAS_VER_MINOR", "CUBLAS_VER_PATCH", "CUBLAS_VER_BUILD"],
+  "library": {
+    "logicalName": "cublasLt13",
+    "windows": "cublasLt64_13.dll",
+    "linux": "libcublasLt.so.13"
+  },
+  "exportCheck": ["%LOCALAPPDATA%\\DotCuda\\sdk\\cuda-13.*\\bin\\x64\\cublasLt64_13.dll"]
+}

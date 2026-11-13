@@ -26,7 +26,7 @@ public sealed record NativeLibrarySpec(
 /// <list type="number">
 /// <item><c>DOTCUDA_LIB_DIR</c>, if set (for example PyTorch's <c>torch/lib</c>);</item>
 /// <item>the normal native library search (application directory, <c>PATH</c> / <c>LD_LIBRARY_PATH</c>);</item>
-/// <item>the toolkit: <c>%CUDA_PATH%\bin</c> on Windows, <c>$CUDA_PATH/lib64</c> or <c>/usr/local/cuda/lib64</c> on Linux.</item>
+/// <item>the toolkit: <c>%CUDA_PATH%\bin\x64</c> (CUDA 13) or <c>%CUDA_PATH%\bin</c> on Windows, <c>$CUDA_PATH/lib64</c> or <c>/usr/local/cuda/lib64</c> on Linux.</item>
 /// </list>
 /// The driver library always comes from the normal search, since it must match the installed driver.
 /// </summary>
@@ -38,19 +38,30 @@ public static class NativeLibraries
     static readonly Dictionary<string, NativeLibrarySpec> Specs = new();
     static readonly Dictionary<string, (nint Handle, string Description)> Loaded = new();
 
-    /// <summary>Registers <paramref name="specs"/> and installs the resolver for <paramref name="assembly"/>. Called once per binding assembly.</summary>
+    /// <summary>
+    /// Registers <paramref name="specs"/> and installs the resolver for <paramref name="assembly"/>. Called once per binding
+    /// assembly. The resolver only uses the specs registered with that assembly, so packages for different CUDA majors
+    /// can't resolve each other's libraries.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">A logical name is already registered with a different spec.</exception>
     public static void Register(Assembly assembly, params NativeLibrarySpec[] specs)
     {
+        var own = new Dictionary<string, NativeLibrarySpec>();
         lock (Specs)
             foreach (var s in specs)
+            {
+                if (Specs.TryGetValue(s.LogicalName, out var existing) && !SameFiles(existing, s))
+                    throw new InvalidOperationException(
+                        $"DotCuda: logical library '{s.LogicalName}' is registered twice with different files ({existing.File}, {s.File}).");
                 Specs[s.LogicalName] = s;
+                own[s.LogicalName] = s;
+            }
         NativeLibrary.SetDllImportResolver(assembly, (name, asm, path) =>
-        {
-            NativeLibrarySpec? spec;
-            lock (Specs) Specs.TryGetValue(name, out spec);
-            return spec is null ? 0 : Load(spec, asm, path);
-        });
+            own.TryGetValue(name, out var spec) ? Load(spec, asm, path) : 0);
     }
+
+    static bool SameFiles(NativeLibrarySpec a, NativeLibrarySpec b) =>
+        a.WindowsFile == b.WindowsFile && a.LinuxFile == b.LinuxFile;
 
     /// <summary>Loads (once) and returns the native handle for a registered logical library.</summary>
     public static nint Load(string logicalName)
@@ -128,7 +139,11 @@ public static class NativeLibraries
         var cudaPath = Environment.GetEnvironmentVariable("CUDA_PATH");
         if (OperatingSystem.IsWindows())
         {
-            if (cudaPath is not null) yield return Path.Combine(cudaPath, "bin");
+            if (cudaPath is not null)
+            {
+                yield return Path.Combine(cudaPath, "bin", "x64"); // CUDA 13+
+                yield return Path.Combine(cudaPath, "bin");        // CUDA 12
+            }
         }
         else
         {

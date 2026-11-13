@@ -1,0 +1,2 @@
+%DOTCUDA_CUDA12_PATH%\include
+%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v12.*\include

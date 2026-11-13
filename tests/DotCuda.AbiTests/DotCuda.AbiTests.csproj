@@ -19,6 +19,12 @@
     <ProjectReference Include="..\..\src\DotCuda.Cuda12.Nvml\DotCuda.Cuda12.Nvml.csproj" />
     <ProjectReference Include="..\..\src\DotCuda.Cuda12.NvJitLink\DotCuda.Cuda12.NvJitLink.csproj" />
     <ProjectReference Include="..\..\src\DotCuda.Cudnn9\DotCuda.Cudnn9.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda13.Driver\DotCuda.Cuda13.Driver.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda13.Nvrtc\DotCuda.Cuda13.Nvrtc.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda13.NvJitLink\DotCuda.Cuda13.NvJitLink.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda13.CublasLt\DotCuda.Cuda13.CublasLt.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda13.Nvml\DotCuda.Cuda13.Nvml.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda13.Cudnn9\DotCuda.Cuda13.Cudnn9.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,5 @@
+%DOTCUDA_CUDNN_INCLUDE%
+%ProgramFiles%\NVIDIA\CUDNN\v9.*\include\13.*
+%DOTCUDA_CUDA13_PATH%\include
+%LOCALAPPDATA%\DotCuda\sdk\cuda-13.*\include
+%ProgramFiles%\NVIDIA GPU Computing Toolkit\CUDA\v13.*\include

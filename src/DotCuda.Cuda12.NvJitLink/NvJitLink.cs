@@ -1,6 +1,10 @@
 using System.Text;
 
+#if CUDA13
+namespace DotCuda.Cuda13;
+#else
 namespace DotCuda.Cuda12;
+#endif
 
 /// <summary>nvJitLink (nvJitLink.h). The bindings are generated; this file holds the hand-written helpers.</summary>
 public static unsafe partial class NvJitLink

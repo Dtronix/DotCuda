@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="Generated\Package.g.props" />
+
+  <PropertyGroup>
+    <RootNamespace>DotCuda.Cuda13</RootNamespace>
+    <!-- The hand-written helpers are shared with the CUDA 12 package; CUDA13 selects their namespace. -->
+    <DefineConstants>$(DefineConstants);CUDA13</DefineConstants>
+    <Description>Pointer-only [LibraryImport] bindings for cuDNN 9 (cudnn.h, CUDA 13 build), generated from NVIDIA's headers (version $(DotCudaHeaderVersion)).</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Generated members from header comments are documented where the header documents them. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DotCuda.Core\DotCuda.Core.csproj" />
+    <ProjectReference Include="..\DotCuda.Cuda13.Driver\DotCuda.Cuda13.Driver.csproj" />
+    <Compile Include="..\DotCuda.Cudnn9\Cudnn.cs" Link="Cudnn.cs" />
+    <None Include="Generated\SKIPPED.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

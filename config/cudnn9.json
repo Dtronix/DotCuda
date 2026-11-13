@@ -8,7 +8,7 @@
   "className": "Cudnn",
   "header": "cudnn.h",
   "headerFiles": ["cudnn.h", "cudnn_version.h", "cudnn_graph.h", "cudnn_ops.h", "cudnn_cnn.h", "cudnn_adv.h", "cudnn_backend.h"],
-  "includeDirs": ["%DOTCUDA_CUDNN_INCLUDE%", "%ProgramFiles%\\NVIDIA\\CUDNN\\v9.*\\include\\12.*"],
+  "includeDirs": ["%DOTCUDA_CUDNN_INCLUDE%", "%ProgramFiles%\\NVIDIA\\CUDNN\\v9.*\\include\\12.*", "%DOTCUDA_CUDA12_PATH%\\include", "%ProgramFiles%\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.*\\include"],
   "functionPrefixes": ["cudnn"],
   "typePrefixes": ["cudnn"],
   "constantPrefixes": ["CUDNN"],

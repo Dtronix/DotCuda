@@ -5,6 +5,8 @@
   "project": "DotCuda.Cuda12.Nvml",
   "className": "Nvml",
   "header": "nvml.h",
+  // CUDA 12 headers: DOTCUDA_CUDA12_PATH, else the newest installed v12.x toolkit (never CUDA_PATH, which may be 13).
+  "includeDirs": ["%DOTCUDA_CUDA12_PATH%\\include", "%ProgramFiles%\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.*\\include"],
   "functionPrefixes": ["nvml"],
   "typePrefixes": ["nvml"],
   "constantPrefixes": ["NVML"],

@@ -1,0 +1,22 @@
+{
+  // NVRTC runtime compilation (nvrtc.h).
+  "name": "Nvrtc13",
+  "project": "DotCuda.Cuda13.Nvrtc",
+  "namespace": "DotCuda.Cuda13",
+  "className": "Nvrtc",
+  "header": "nvrtc.h",
+  // CUDA 13 headers: DOTCUDA_CUDA13_PATH, else tools/fetch-cuda-sdk.ps1's folder, else an installed v13.x toolkit.
+  "includeDirs": ["%DOTCUDA_CUDA13_PATH%\\include", "%LOCALAPPDATA%\\DotCuda\\sdk\\cuda-13.*\\include", "%ProgramFiles%\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.*\\include"],
+  "functionPrefixes": ["nvrtc"],
+  "typePrefixes": ["nvrtc"],
+  "constantPrefixes": ["NVRTC"],
+  "library": {
+    "logicalName": "nvrtc13",
+    "windows": "nvrtc64_130_0.dll",
+    "linux": "libnvrtc.so.13",
+    // NVRTC loads its builtins library by bare name when compiling; its file name carries the minor version.
+    "windowsPreload": ["nvrtc-builtins64_13*.dll"],
+    "linuxPreload": ["libnvrtc-builtins.so.13*"]
+  },
+  "exportCheck": ["%LOCALAPPDATA%\\DotCuda\\sdk\\cuda-13.*\\bin\\x64\\nvrtc64_130_0.dll"]
+}

@@ -1,4 +1,8 @@
+#if CUDA13
+namespace DotCuda.Cuda13;
+#else
 namespace DotCuda.Cuda12;
+#endif
 
 /// <summary>CUDA driver API (cuda.h). The bindings are generated; this file holds the hand-written helpers.</summary>
 public static unsafe partial class Cu

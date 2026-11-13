@@ -560,8 +560,16 @@ public sealed partial class ModelBuilder
             if (Unwrap(call.Args[i]) is not DeclRefExpr { Decl: var d } || d != f.Parameters[i]) return null;
         if (callee.Parameters.Count != f.Parameters.Count) return null;
         for (int i = 0; i < callee.Parameters.Count; i++)
-            if (clang.equalTypes(callee.Parameters[i].Type.Handle.CanonicalType, f.Parameters[i].Type.Handle.CanonicalType) == 0) return null;
+            // const/volatile never change the ABI, and C converts between such pointers implicitly
+            // (nvJitLink 13: wrapper takes const char **, export takes const char * const *).
+            if (Unqualified(callee.Parameters[i].Type.Handle) != Unqualified(f.Parameters[i].Type.Handle)) return null;
         return callee.Name;
+
+        static string Unqualified(CXType t) =>
+            string.Join(' ', t.CanonicalType.Spelling.ToString()
+                .Replace("*", " * ")
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .Where(w => w is not ("const" or "volatile" or "restrict" or "__restrict")));
 
         static Expr? Unwrap(Expr? e)
         {
