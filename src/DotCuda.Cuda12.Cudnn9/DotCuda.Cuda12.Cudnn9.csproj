@@ -3,7 +3,7 @@
   <Import Project="Generated\Package.g.props" />
 
   <PropertyGroup>
-    <RootNamespace>DotCuda.Cudnn9</RootNamespace>
+    <RootNamespace>DotCuda.Cuda12</RootNamespace>
     <Description>Pointer-only [LibraryImport] bindings for cuDNN 9 (cudnn.h, CUDA 12 build), generated from NVIDIA's headers (version $(DotCudaHeaderVersion)).</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- Generated members from header comments are documented where the header documents them. -->

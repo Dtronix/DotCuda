@@ -1,7 +1,7 @@
 #if CUDA13
 namespace DotCuda.Cuda13;
 #else
-namespace DotCuda.Cudnn9;
+namespace DotCuda.Cuda12;
 #endif
 
 /// <summary>cuDNN 9 (cudnn.h). The bindings are generated; this file holds the hand-written helpers.</summary>

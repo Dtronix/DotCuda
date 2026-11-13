@@ -12,7 +12,7 @@
     <Project Path="src/DotCuda.Cuda13.NvJitLink/DotCuda.Cuda13.NvJitLink.csproj" />
     <Project Path="src/DotCuda.Cuda13.Nvml/DotCuda.Cuda13.Nvml.csproj" />
     <Project Path="src/DotCuda.Cuda13.Nvrtc/DotCuda.Cuda13.Nvrtc.csproj" />
-    <Project Path="src/DotCuda.Cudnn9/DotCuda.Cudnn9.csproj" />
+    <Project Path="src/DotCuda.Cuda12.Cudnn9/DotCuda.Cuda12.Cudnn9.csproj" />
     <Project Path="src/DotCuda.Generator/DotCuda.Generator.csproj" />
   </Folder>
   <Folder Name="/tests/">

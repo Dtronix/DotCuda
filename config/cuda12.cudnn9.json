@@ -3,8 +3,7 @@
   // toolkit: set DOTCUDA_CUDNN_INCLUDE, or the newest %ProgramFiles%\NVIDIA\CUDNN\v9.*\include\12.* is used.
   // Bindings target the cudnn64_9 shim, which exports the whole API and loads its sub-libraries on demand.
   "name": "Cudnn",
-  "project": "DotCuda.Cudnn9",
-  "namespace": "DotCuda.Cudnn9",
+  "project": "DotCuda.Cuda12.Cudnn9",
   "className": "Cudnn",
   "header": "cudnn.h",
   "headerFiles": ["cudnn.h", "cudnn_version.h", "cudnn_graph.h", "cudnn_ops.h", "cudnn_cnn.h", "cudnn_adv.h", "cudnn_backend.h"],

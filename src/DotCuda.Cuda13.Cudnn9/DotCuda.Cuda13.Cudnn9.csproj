@@ -15,7 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DotCuda.Core\DotCuda.Core.csproj" />
     <ProjectReference Include="..\DotCuda.Cuda13.Driver\DotCuda.Cuda13.Driver.csproj" />
-    <Compile Include="..\DotCuda.Cudnn9\Cudnn.cs" Link="Cudnn.cs" />
+    <Compile Include="..\DotCuda.Cuda12.Cudnn9\Cudnn.cs" Link="Cudnn.cs" />
     <None Include="Generated\SKIPPED.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 

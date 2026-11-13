@@ -11,7 +11,7 @@ shims, no native code of our own, NativeAOT-compatible.
 | `DotCuda.Cuda12.NvJitLink` | `nvJitLink.h` | `NvJitLink` | 14 functions |
 | `DotCuda.Cuda12.CublasLt` | `cublasLt.h` | `CublasLt` | 44 functions, 20 enums, 6 structs, 5 handles, 21 constants |
 | `DotCuda.Cuda12.Nvml` | `nvml.h` | `Nvml` | 330 functions, 51 enums, 95 structs, 6 handles, 405 constants |
-| `DotCuda.Cudnn9` | `cudnn.h` (cuDNN 9.14 SDK, CUDA 12 build) | `Cudnn` | 220 functions, 66 enums, 5 structs, 22 handles, 36 constants |
+| `DotCuda.Cuda12.Cudnn9` | `cudnn.h` (cuDNN 9.14 SDK, CUDA 12 build) | `Cudnn` | 220 functions, 66 enums, 5 structs, 22 handles, 36 constants |
 | **CUDA 13** (13.4 headers, namespace `DotCuda.Cuda13`) | | | |
 | `DotCuda.Cuda13.Driver` | `cuda.h` (+ `library_types.h`) | `Cu` | 489 functions |
 | `DotCuda.Cuda13.Nvrtc` | `nvrtc.h` | `Nvrtc` | 29 functions |
@@ -20,7 +20,7 @@ shims, no native code of our own, NativeAOT-compatible.
 | `DotCuda.Cuda13.Nvml` | `nvml.h` | `Nvml` | 404 functions |
 | `DotCuda.Cuda13.Cudnn9` | `cudnn.h` (cuDNN 9.14 SDK, CUDA 13 build) | `Cudnn` | 220 functions |
 
-The CUDA 12 packages above use the 12.6 headers and namespace `DotCuda.Cuda12` (cuDNN: `DotCuda.Cudnn9`). CUDA 13
+The CUDA 12 packages above use the 12.6 headers and namespace `DotCuda.Cuda12`. CUDA 13
 supports Turing (sm_75) and newer; Maxwell, Pascal and Volta need the CUDA 12 packages.
 
 Everything not bound is listed with its reason in each package's `Generated/SKIPPED.md`. Types shared across libraries

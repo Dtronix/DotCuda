@@ -18,7 +18,7 @@
     <ProjectReference Include="..\..\src\DotCuda.Cuda12.CublasLt\DotCuda.Cuda12.CublasLt.csproj" />
     <ProjectReference Include="..\..\src\DotCuda.Cuda12.Nvml\DotCuda.Cuda12.Nvml.csproj" />
     <ProjectReference Include="..\..\src\DotCuda.Cuda12.NvJitLink\DotCuda.Cuda12.NvJitLink.csproj" />
-    <ProjectReference Include="..\..\src\DotCuda.Cudnn9\DotCuda.Cudnn9.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda12.Cudnn9\DotCuda.Cuda12.Cudnn9.csproj" />
   </ItemGroup>
 
 </Project>

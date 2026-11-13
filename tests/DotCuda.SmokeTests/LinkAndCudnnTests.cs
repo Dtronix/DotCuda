@@ -1,5 +1,4 @@
 using DotCuda.Cuda12;
-using DotCuda.Cudnn9;
 
 namespace DotCuda.SmokeTests;
 
