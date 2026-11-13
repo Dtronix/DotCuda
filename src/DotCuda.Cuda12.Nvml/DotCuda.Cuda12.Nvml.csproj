@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <RootNamespace>DotCuda.Cuda12</RootNamespace>
-    <Description>Pointer-only [LibraryImport] bindings for NVML, the NVIDIA Management Library (nvml.h, CUDA 12 headers), generated from NVIDIA's headers.</Description>
+    <Description>Pointer-only [LibraryImport] bindings for NVML, the NVIDIA Management Library (nvml.h, CUDA 12 headers), generated from NVIDIA's headers (version $(DotCudaHeaderVersion)).</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- Generated members from header comments are documented where the header documents them. -->
     <NoWarn>$(NoWarn);CS1591</NoWarn>

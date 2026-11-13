@@ -46,18 +46,25 @@ public class AbiTests
     [MethodDataSource(nameof(Libraries))]
     public async Task MsvcMatchesClang(string library)
     {
+        // C#/clang agreement is always checked by CSharpLayoutMatchesClang; this adds MSVC where it and the headers exist
+        // (CI runners have MSVC on Windows but no CUDA headers).
         var compiler = Msvc.Find();
-        if (compiler is null)
-        {
-            Console.WriteLine("MSVC not found (vswhere); C#/clang agreement is checked by CSharpLayoutMatchesClang only.");
-            return;
-        }
-        var include = Path.Combine(Environment.GetEnvironmentVariable("CUDA_PATH") ?? throw new InvalidOperationException("CUDA_PATH is not set"), "include");
+        if (compiler is null) Skip.Test("MSVC not found (vswhere); C#/clang agreement is still checked by CSharpLayoutMatchesClang.");
+        // Every library's headers include CUDA toolkit headers (cuDNN's include cuda_runtime_api.h), so the toolkit comes first.
+        var cudaPath = Environment.GetEnvironmentVariable("CUDA_PATH");
+        if (cudaPath is null || !File.Exists(Path.Combine(cudaPath, "include", "cuda.h")))
+            Skip.Test("CUDA toolkit headers not found (CUDA_PATH); C#/clang agreement is still checked by CSharpLayoutMatchesClang.");
         var source = Path.Combine(AppContext.BaseDirectory, "Generated", $"abi_{library.ToLowerInvariant()}.c");
         // Extra include directories from the library's config (e.g. the cuDNN SDK), resolved the way the generator does.
         var extraFile = Path.ChangeExtension(source, ".includes");
         var extra = File.Exists(extraFile) ? File.ReadAllLines(extraFile).Select(IncludeDirs.Resolve).OfType<string>().ToList() : [];
-        var lines = compiler.CompileAndRun(source, [.. extra, include]);
+        List<string> includes = [.. extra, Path.Combine(cudaPath!, "include")];
+        var headers = File.ReadLines(source).Select(l => System.Text.RegularExpressions.Regex.Match(l, "^#include \"(.+)\"$"))
+            .Where(m => m.Success).Select(m => m.Groups[1].Value).ToList();
+        var missing = headers.Where(h => !includes.Any(d => File.Exists(Path.Combine(d, h)))).ToList();
+        if (missing.Count > 0)
+            Skip.Test($"headers not found ({string.Join(", ", missing)}); set CUDA_PATH (and install the cuDNN SDK) to compare with MSVC.");
+        var lines = compiler!.CompileAndRun(source, includes);
 
         var msvc = new Dictionary<string, long>();
         foreach (var line in lines)

@@ -10,7 +10,16 @@ public class LinkAndCudnnTests
     [Test]
     public async Task NvJitLinkLinksNvrtcLtoIr()
     {
-        var (cubinSize, version) = LinkLtoIr();
+        (int cubinSize, (uint Major, uint Minor) version) result = default;
+        try
+        {
+            result = LinkLtoIr();
+        }
+        catch (DllNotFoundException e)
+        {
+            Skip.Test($"NVRTC / nvJitLink not installed: {e.Message}");
+        }
+        var (cubinSize, version) = result;
         await Assert.That(cubinSize).IsGreaterThan(0);
         await Assert.That(version.Major).IsGreaterThanOrEqualTo(12u);
     }

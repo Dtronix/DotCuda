@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <RootNamespace>DotCuda.Cudnn9</RootNamespace>
-    <Description>Pointer-only [LibraryImport] bindings for cuDNN 9 (cudnn.h, CUDA 12 build), generated from NVIDIA's headers.</Description>
+    <Description>Pointer-only [LibraryImport] bindings for cuDNN 9 (cudnn.h, CUDA 12 build), generated from NVIDIA's headers (version $(DotCudaHeaderVersion)).</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- Generated members from header comments are documented where the header documents them. -->
     <NoWarn>$(NoWarn);CS1591</NoWarn>

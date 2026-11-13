@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- The one project version. A release tag vX.Y.Z must match it (checked by the release workflow). -->
+    <Version>0.1.0</Version>
     <Authors>Dtronix</Authors>
     <Company>Dtronix</Company>
     <Copyright>Copyright (c) 2026 Dtronix</Copyright>
