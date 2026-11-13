@@ -1,0 +1,19 @@
+{
+  // NVML, the NVIDIA Management Library (nvml.h): device inventory, utilization, memory, clocks, temperature, power.
+  // The library ships with the driver, not the toolkit, so like the driver it is never taken from DOTCUDA_LIB_DIR.
+  "name": "Nvml",
+  "project": "DotCuda.Cuda12.Nvml",
+  "className": "Nvml",
+  "header": "nvml.h",
+  "functionPrefixes": ["nvml"],
+  "typePrefixes": ["nvml"],
+  "constantPrefixes": ["NVML"],
+  "versionMacros": ["NVML_API_VERSION"],
+  "library": {
+    "logicalName": "nvml",
+    "windows": "nvml.dll",
+    "linux": "libnvidia-ml.so.1",
+    "useLibDir": false
+  },
+  "exportCheck": ["%SystemRoot%\\System32\\nvml.dll"]
+}

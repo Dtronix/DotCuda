@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TUnit" Version="1.76.45" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DotCuda.Cuda12.Driver\DotCuda.Cuda12.Driver.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda12.Nvrtc\DotCuda.Cuda12.Nvrtc.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda12.CublasLt\DotCuda.Cuda12.CublasLt.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda12.Nvml\DotCuda.Cuda12.Nvml.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cuda12.NvJitLink\DotCuda.Cuda12.NvJitLink.csproj" />
+    <ProjectReference Include="..\..\src\DotCuda.Cudnn9\DotCuda.Cudnn9.csproj" />
+  </ItemGroup>
+
+</Project>

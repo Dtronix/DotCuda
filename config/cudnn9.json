@@ -1,0 +1,34 @@
+{
+  // cuDNN 9 (cudnn.h and the headers it includes), built for CUDA 12. Headers come from the cuDNN SDK, not the
+  // toolkit: set DOTCUDA_CUDNN_INCLUDE, or the newest %ProgramFiles%\NVIDIA\CUDNN\v9.*\include\12.* is used.
+  // Bindings target the cudnn64_9 shim, which exports the whole API and loads its sub-libraries on demand.
+  "name": "Cudnn",
+  "project": "DotCuda.Cudnn9",
+  "namespace": "DotCuda.Cudnn9",
+  "className": "Cudnn",
+  "header": "cudnn.h",
+  "headerFiles": ["cudnn.h", "cudnn_version.h", "cudnn_graph.h", "cudnn_ops.h", "cudnn_cnn.h", "cudnn_adv.h", "cudnn_backend.h"],
+  "includeDirs": ["%DOTCUDA_CUDNN_INCLUDE%", "%ProgramFiles%\\NVIDIA\\CUDNN\\v9.*\\include\\12.*"],
+  "functionPrefixes": ["cudnn"],
+  "typePrefixes": ["cudnn"],
+  "constantPrefixes": ["CUDNN"],
+  // cudaStream_t (struct CUstream_st*) is the driver package's CUstream.
+  "references": ["Driver"],
+  // The backend (graph) API's descriptor type is typedef void*; bind it as a handle like the others.
+  "pointerHandles": ["cudnnBackendDescriptor_t"],
+  // Turns on CUDNN_DEPRECATED so the legacy API is marked [Obsolete]. Annotation-only: MSVC's C compiler rejects the
+  // deprecated enumerators it produces, so the ABI test's C program is compiled without it.
+  "annotationDefines": ["CUDNN_WARN_DEPRECATED"],
+  "versionMacros": ["CUDNN_MAJOR", "CUDNN_MINOR", "CUDNN_PATCHLEVEL"],
+  "packageVersionMacros": ["CUDNN_MAJOR", "CUDNN_MINOR", "CUDNN_PATCHLEVEL"],
+  "library": {
+    "logicalName": "cudnn",
+    "windows": "cudnn64_9.dll",
+    "linux": "libcudnn.so.9",
+    // The shim loads cudnn_graph/ops/cnn/adv/heuristic/engines_* by bare name; when it comes from DOTCUDA_LIB_DIR
+    // (e.g. torch/lib, not on PATH) they are preloaded from the same directory so those lookups succeed.
+    "windowsPreload": ["cudnn_*64_9.dll"],
+    "linuxPreload": ["libcudnn_*.so.9"]
+  },
+  "exportCheck": ["%ProgramFiles%\\NVIDIA\\CUDNN\\v9.*\\bin\\12.*\\cudnn64_9.dll"]
+}

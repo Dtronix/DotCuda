@@ -1,0 +1,2 @@
+%DOTCUDA_CUDNN_INCLUDE%
+%ProgramFiles%\NVIDIA\CUDNN\v9.*\include\12.*

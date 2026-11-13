@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Authors>Dtronix</Authors>
+    <Company>Dtronix</Company>
+    <Copyright>Copyright (c) 2026 Dtronix</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Dtronix/DotCuda</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Dtronix/DotCuda</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>cuda;nvidia;gpu;cudnn;cublas;nvrtc;nvml;interop;aot</PackageTags>
+  </PropertyGroup>
+</Project>

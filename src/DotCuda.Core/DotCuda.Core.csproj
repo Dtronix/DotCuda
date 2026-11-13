@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>DotCuda</RootNamespace>
+    <Version>0.1.0</Version>
+    <Description>Version-independent support for the DotCuda bindings: native library resolution, DotCudaException and Utf8Z.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+</Project>

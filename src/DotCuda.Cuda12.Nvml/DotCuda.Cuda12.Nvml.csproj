@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="Generated\Package.g.props" />
+
+  <PropertyGroup>
+    <RootNamespace>DotCuda.Cuda12</RootNamespace>
+    <Description>Pointer-only [LibraryImport] bindings for NVML, the NVIDIA Management Library (nvml.h, CUDA 12 headers), generated from NVIDIA's headers.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Generated members from header comments are documented where the header documents them. -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DotCuda.Core\DotCuda.Core.csproj" />
+    <None Include="Generated\SKIPPED.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

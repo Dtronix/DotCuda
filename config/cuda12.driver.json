@@ -1,0 +1,33 @@
+{
+  // CUDA driver API (cuda.h).
+  "name": "Driver",
+  "project": "DotCuda.Cuda12.Driver",
+  "className": "Cu",
+  "header": "cuda.h",
+  "functionPrefixes": ["cu"],
+  "typePrefixes": ["CU", "cu", "cl_"],
+  "constantPrefixes": ["CU"],
+  // Off, as in the spike: stream-ordered calls bind to the legacy default-stream exports.
+  "perThreadDefaultStream": false,
+  "integerHandles": {
+    "CUdeviceptr": ["CUdeviceptr_v2"],
+    "CUdevice": ["CUdevice_v1"],
+    "CUtexObject": ["CUtexObject_v1"],
+    "CUsurfObject": ["CUsurfObject_v1"],
+    "CUmemGenericAllocationHandle": ["CUmemGenericAllocationHandle_v1"],
+    "CUgraphConditionalHandle": []
+  },
+  // CUDA-wide types from library_types.h live here so cuBLASLt, cuDNN, ... share one definition.
+  "extraIncludes": ["library_types.h"],
+  "extraTypes": ["cudaDataType", "libraryPropertyType"],
+  "excludeFunctions": {
+    "cuDeviceGetNvSciSyncAttributes": "NvSciSync is Linux/Tegra-only; nvcuda.dll does not export it"
+  },
+  "library": {
+    "logicalName": "cuda",
+    "windows": "nvcuda.dll",
+    "linux": "libcuda.so.1",
+    "useLibDir": false
+  },
+  "exportCheck": ["%SystemRoot%\\System32\\nvcuda.dll"]
+}

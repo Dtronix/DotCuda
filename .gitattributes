@@ -1,0 +1,15 @@
+* text=auto
+
+*.cs text eol=crlf
+*.csproj text eol=crlf
+*.slnx text eol=crlf
+*.props text eol=crlf
+*.json text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+
+# Generator output: committed so header updates are reviewable diffs, but collapsed in GitHub diffs and stats.
+src/*/Generated/** linguist-generated=true
+tests/DotCuda.AbiTests/Generated/** linguist-generated=true

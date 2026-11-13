@@ -1,0 +1,17 @@
+{
+  // nvJitLink (nvJitLink.h): links LTO-IR, PTX and cubins (e.g. NVRTC output compiled with -dlto) into a cubin.
+  // The public functions are static inline wrappers over versioned exports (nvJitLinkCreate -> __nvJitLinkCreate_12_6);
+  // the generator binds each wrapper's name to the export it forwards to.
+  "name": "NvJitLink",
+  "project": "DotCuda.Cuda12.NvJitLink",
+  "className": "NvJitLink",
+  "header": "nvJitLink.h",
+  "functionPrefixes": ["nvJitLink"],
+  "typePrefixes": ["nvJitLink"],
+  "constantPrefixes": ["NVJITLINK"],
+  "library": {
+    "logicalName": "nvJitLink",
+    "windows": "nvJitLink_120_0.dll",
+    "linux": "libnvJitLink.so.12"
+  }
+}

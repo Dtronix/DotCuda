@@ -1,0 +1,8 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..'))" />
+
+  <!-- Shipped libraries: trimming and NativeAOT analyzers on (warnings are errors). The generator is a dev-time tool. -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'DotCuda.Generator'">
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+</Project>
